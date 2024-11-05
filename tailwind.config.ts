@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+			backgroundImage: {
+        'ai-bg': "url('/backImage.jpg')",
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

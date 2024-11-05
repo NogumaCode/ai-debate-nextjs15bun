@@ -1,6 +1,9 @@
 import OpenAI from "openai";
-
 const openAiSecretKey = process.env.OPEN_AI_SECRET_KEY;
+
+if (!openAiSecretKey) {
+  throw new Error("OPENAI_API_KEY is missing in environment variables.");
+}
 
 const openAiClient = new OpenAI({
   apiKey: openAiSecretKey,

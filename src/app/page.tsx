@@ -1,3 +1,7 @@
+import Debating from "@/components/Debating";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL : 'http://localhost:3000/api/';
+const finishCount = 3;
+const speed = 100;
 
 export default async function Home() {
   // エラーページ検証
@@ -5,6 +9,6 @@ export default async function Home() {
   //ローディング画面検証
   // await new Promise((resolve)=>setTimeout(resolve,6000))
   return (
-    <div></div>
+    <Debating apiUrl={apiUrl} finishCount={finishCount} speed={speed}/>
   );
 }

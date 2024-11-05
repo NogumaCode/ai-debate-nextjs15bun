@@ -1,18 +1,19 @@
-// import { deleteThreads } from "@/lib/functions/threadFc";
+import { deleteThreads } from "@/lib/functions/threadFc";
 import prisma from "@/lib/prismadb";
 import { checkRunStateAndGetMessage, createMessage, createThread, runAssistant } from "@/lib/openai";
 import { NextResponse } from "next/server";
 const assistantId = process.env.ASSISTANT_ID as string;
 
-// export async function GET(request:Request){
-//     try{
-//         await deleteThreads();
-//         return NextResponse.json({ message: 'success'}, { status: 200});
-//     }catch(err:any){
-//         const errMessage = err.message ?  err.message : `Internal Server Error.`;
-//         return NextResponse.json({ message: errMessage}, { status: 500});
-//     }
-// }
+export async function GET(){
+    try{
+        await deleteThreads();
+        return NextResponse.json({ message: 'success'}, { status: 200});
+    }catch(error:unknown){
+        const err = error as Error
+        const errMessage = err.message ?  err.message : `Internal Server Error.`;
+        return NextResponse.json({ message: errMessage}, { status: 500});
+    }
+}
 
 export async function POST(request: Request){
     try{
@@ -28,11 +29,11 @@ export async function POST(request: Request){
 
         //////////
         //◆【非同期でゴミ掃除(一定期間経過したスレッドを削除)】
-        // deleteThreads().catch((error:unknown)=>{
-        //   const err = error as Error;
-        //   console.log(err.message)
-        // }
-        // );
+        deleteThreads().catch((error:unknown)=>{
+          const err = error as Error;
+          console.log(err.message)
+        }
+        );
 
 
         //////////
@@ -84,7 +85,7 @@ export async function POST(request: Request){
         });
         if(!runResult.result)throw new Error(runResult.message);
         const admitRunId = runResult.runId;
-        
+
         //■[ stance:deny ]
         runResult = await runAssistant({
             threadId:denyThreadId,
