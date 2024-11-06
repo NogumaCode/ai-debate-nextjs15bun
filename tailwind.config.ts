@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+			backgroundImage: {
+        'ai-bg': "url('/bg.webp')",
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
