@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
   	extend: {
 			backgroundImage: {
-        'ai-bg': "url('/backImage.jpg')",
+        'ai-bg': "url('/bg.webp')",
       },
   		colors: {
   			background: 'hsl(var(--background))',
