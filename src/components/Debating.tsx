@@ -207,21 +207,21 @@ const Debating = ({
 
         {dispAdmitMessage.length>0 || dispDenyMessage.length>0
           ?(
-            <div className="flex items-cener justify-between flex-grow">
+            <div className="flex items-center justify-between flex-grow">
               <div className="w-1/2 mt-auto">
-                  <div className="text-center w-2/3">
+                  <div className="flex flex-col items-center jsutify-center flex-wrap text-center w-2/3 mx-auto">
                       <span className="opacity-80 bg-slate-50 inline-block mb-3 px-3 text-xl text-red-700 font-bold rounded-md">賛成</span>
                   </div>
                   {dispAdmitMessage.length>0 && (
-                      <DispMessages messages={dispAdmitMessage} speed={speed} addClassName={'ml-5'}/>
+                      <DispMessages messages={dispAdmitMessage} speed={speed}/>
                   )}
               </div>
               <div className="w-1/2  mt-auto">
-                  <div className="text-center w-2/3 ml-auto">
+                  <div className="flex flex-col items-center jsutify-center flex-wrap text-center w-2/3 mx-auto">
                       <span className="opacity-80 bg-slate-50 inline-block mb-3 px-3 text-xl text-blue-700 font-bold rounded-md">反対</span>
                   </div>
                   {dispDenyMessage.length>0 && (
-                      <DispMessages messages={dispDenyMessage} speed={speed} addClassName={'ml-auto mr-5'}/>
+                      <DispMessages messages={dispDenyMessage} speed={speed} />
                   )}
               </div>
             </div>

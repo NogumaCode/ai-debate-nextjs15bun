@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 const DispMessages = ({
     messages,
     speed,  //文字の表示速度をミリ秒で
-    addClassName, //左右で表示位置が違うので、tailwindcssのクラス名を受け取る
+    // addClassName, //左右で表示位置が違うので、tailwindcssのクラス名を受け取る
 }: {
     messages: string[],
     speed: number
-    addClassName: string
+    // addClassName: string
 }) => {
     const [displayedText, setDisplayedText] = useState('');
     const [index, setIndex] = useState(0);
@@ -35,7 +35,7 @@ const DispMessages = ({
     return (
         <div
             ref={scrollRef}
-            className={`bg-slate-100 opacity-85 w-2/3 ml-5 mb-2 rounded-md max-h-[350px] overflow-y-auto ${addClassName}`}
+            className={`items-center text-left bg-slate-100 opacity-85 w-2/3 mb-2 rounded-md max-h-[600px] overflow-y-auto mx-auto`}
         >
             {/*■[ messagesの最後の要素以外は、普通にレンダリング ]*/}
             {messages.slice(0, -1).map((message) => (
